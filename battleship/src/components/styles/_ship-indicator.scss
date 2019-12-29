@@ -1,0 +1,26 @@
+.ship-indicator {
+  min-width: 100px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  &.destroyed {
+    background: #bbb;
+    opacity: 0.7;
+  }
+  &--health {
+    display: flex;
+    span {
+      width: 20px;
+      height: 10px;
+      margin-right: 5px;
+      background: green;
+      display: block;
+
+      &.hit {
+        background: red;
+      }
+    }
+  }
+}

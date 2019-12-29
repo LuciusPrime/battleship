@@ -1,6 +1,6 @@
 <template>
     <div>
-
+Im info pane
     </div>
 </template>
 
