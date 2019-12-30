@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
+    turnStatus: "start",
     guesses: [],
     enemyGuesses: [],
     ships: [
@@ -74,11 +75,11 @@ export const store = new Vuex.Store({
     ]
   },
   mutations: {
+    //TODO:delete
     change(state, flavor) {
       state.flavor = flavor;
     },
     checkSpot(state, payload) {
-      alert(payload[1]);
       payload[0] == "player"
         ? state.guesses.push(payload[1])
         : state.enemyGuesses.push(payload[1]);
@@ -86,6 +87,7 @@ export const store = new Vuex.Store({
   },
   getters: {
     ships: state => state.ships,
-    enemyShips: state => state.enemyShips
+    enemyShips: state => state.enemyShips,
+    turnStatus: state => state.turnStatus
   }
 });

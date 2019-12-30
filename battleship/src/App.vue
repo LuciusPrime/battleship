@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <header>
-      Battleship
-    </header>
-    <main id="game">
+    <info-pane />
+    <main id="game" :class="$store.state.turnStatus">
       <div class="board-wrapper">
         <div>
           <h3>Your Board</h3>
@@ -14,7 +12,9 @@
           <game-board />
         </div>
       </div>
-
+      <div>
+        <button>Start</button>
+      </div>
       <h4>Your Ships</h4>
       <tool-bar :ships="$store.getters.ships" />
       <h4>Enemy Ships</h4>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import InfoPane from "./components/InfoPane";
 import ToolBar from "./components/ToolBar";
 import GameBoard from "./components/GameBoard";
 
@@ -33,8 +34,13 @@ export default {
     return {};
   },
   components: {
+    InfoPane,
     ToolBar,
     GameBoard
   }
 };
 </script>
+
+<style lang="scss">
+@import "./components/styles/_app.scss";
+</style>
