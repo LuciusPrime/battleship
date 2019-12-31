@@ -8,7 +8,7 @@
 export default {
   methods: {
     checkClick: function(event) {
-      this.$store.commit("checkSpot", ["player", event.target.name]);
+      this.$store.commit("checkSpot", event.target.name);
       event.target.disabled = true;
     }
   }

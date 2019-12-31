@@ -19,6 +19,8 @@ export default {
       handler: function(newValue) {
         if (newValue == "start") {
           this.message = "Press start to begin";
+        } else if (newValue == "setPieces") {
+          this.message = "Place your ships on the board ";
         } else {
           this.message = "xxx";
         }

@@ -12,14 +12,16 @@
           <game-board />
         </div>
       </div>
-      <div>
-        <button>Start</button>
-      </div>
+
       <h4>Your Ships</h4>
       <tool-bar :ships="$store.getters.ships" />
       <h4>Enemy Ships</h4>
       <tool-bar :ships="$store.getters.enemyShips" />
     </main>
+    <portal to="modal" v-if="$store.state.turnStatus === 'start'">
+      <button v-on:click="startGame">Start</button>
+    </portal>
+    <portal-target name="modal" id="modal" v-if="$store.state.showModal"></portal-target>
   </div>
 </template>
 
@@ -37,6 +39,12 @@ export default {
     InfoPane,
     ToolBar,
     GameBoard
+  },
+  methods: {
+    startGame: function() {
+      this.$store.commit("statusUpdate", "setPieces");
+      this.$store.commit("toggleModal");
+    }
   }
 };
 </script>

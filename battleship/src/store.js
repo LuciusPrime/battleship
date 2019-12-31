@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     turnStatus: "start",
+    showModal: true,
     guesses: [],
     enemyGuesses: [],
     ships: [
@@ -75,14 +76,20 @@ export const store = new Vuex.Store({
     ]
   },
   mutations: {
-    //TODO:delete
-    change(state, flavor) {
-      state.flavor = flavor;
+    statusUpdate(state, status) {
+      state.turnStatus = status;
+    },
+    toggleModal(state) {
+      setTimeout(() => {
+        state.showModal = false;
+      }, 2000);
     },
     checkSpot(state, payload) {
-      payload[0] == "player"
-        ? state.guesses.push(payload[1])
-        : state.enemyGuesses.push(payload[1]);
+      if (state.turnStatus == "player" || state.turnStatus == "computer") {
+        state.turnStatus == "player"
+          ? state.guesses.push(payload)
+          : state.enemyGuesses.push(payload);
+      }
     }
   },
   getters: {
